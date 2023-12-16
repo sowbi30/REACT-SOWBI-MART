@@ -1,0 +1,111 @@
+// Login.js
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthProvider";
+import '../App.css';
+
+const title = "Login";
+const btnText = "Submit Now";
+
+const Login = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const { login, isAuthenticated, logout } = useAuth();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+      .then(() => {
+        setLoggedIn(true);
+        alert("Login successful!");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorMessage("Please provide valid email & password!");
+      });
+  };
+
+  const handleLogout = () => {
+    logout();
+    setLoggedIn(false);
+  };
+  return (
+    <div>
+      <div className="login-section padding-tb section-bg">
+        <div className="container">
+          <div className="account-wrapper">
+            <h3 className="title">{title}</h3>
+
+            {loggedIn ? (
+              // Render logout button if logged in
+              <div className="form-group text-center">
+                <button className="d-block lab-btn" onClick={handleLogout}>
+                  <span>Logout</span>
+                </button>
+              </div>
+            ) : (
+              // Render login form if not logged in
+              <form className="account-form" onSubmit={handleLogin}>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address *"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password *"
+                  />
+                </div>
+                {/* showing error message */}
+                <div>
+                  {errorMessage && (
+                    <div className="error-message text-danger">
+                      {errorMessage}
+                    </div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <div className="d-flex justify-content-between flex-wrap pt-sm-2">
+                    <div className="checkgroup">
+                      <input type="checkbox" name="remember" id="remember" />
+                      <label htmlFor="remember">Remember Me</label>
+                    </div>
+                    <Link to="/forgetpass">Forget Password?</Link>
+                  </div>
+                </div>
+                <div className="form-group text-center">
+                  <button className="d-block lab-btn">
+                    <span>{btnText}</span>
+                  </button>
+                </div>
+              </form>
+            )}
+
+            <div className="account-bottom">
+              <span className="d-block cate pt-10">
+                Don’t Have any Account? <Link to="/signup">Sign Up</Link>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

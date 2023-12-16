@@ -36,3 +36,145 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* login */
+/* Body styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Login section styles */
+.login-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Account wrapper styles */
+.account-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #ddd; /* Border color */
+  border-radius: 10px; /* Border radius */
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+  width: 400px;
+}
+
+/* Title styles */
+.title {
+  text-align: center;
+  color: #333; /* Text color */
+}
+
+/* Form styles */
+.account-form {
+  margin-top: 20px;
+}
+
+/* Form input styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd; /* Input border color */
+  border-radius: 5px; /* Input border radius */
+}
+
+/* Error message styles */
+.error-message {
+  color: #ff0000; /* Error message color */
+}
+
+/* Checkbox styles */
+.checkgroup {
+  display: flex;
+  align-items: center;
+}
+
+/* Button styles */
+.lab-btn {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Link styles */
+a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Bottom text styles */
+.account-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333; /* Text color */
+}
+
+/* Social icons styles */
+.subtitle {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333; /* Text color */
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.social-icons li {
+  margin: 0 10px;
+}
+
+.github,
+.facebook,
+.twitter,
+.linkedin,
+.instagram {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Adjust social icon colors as needed */
+.github i {
+  color: #333;
+}
+
+.facebook i {
+  color: #3b5998;
+}
+
+.twitter i {
+  color: #1da1f2;
+}
+
+.linkedin i {
+  color: #0077b5;
+}
+
+.instagram i {
+  color: #e4405f;
+}
